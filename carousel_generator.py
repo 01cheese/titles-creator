@@ -16,7 +16,12 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 from sklearn.cluster import KMeans
 
-STEAMGRIDDB_API_KEY = os.environ.get("STEAMGRIDDB_API_KEY", "d01accd13ac6d6297ec0569c0c17237a")
+from dotenv import load_dotenv
+
+STEAMGRIDDB_API_KEY = os.environ.get("STEAMGRIDDB_API_KEY")
+
+if not STEAMGRIDDB_API_KEY:
+    raise ValueError("ERROR: STEAMGRIDDB_API_KEY is missing in environment variables!")
 
 TIKTOK_W, TIKTOK_H = 1080, 1920
 
