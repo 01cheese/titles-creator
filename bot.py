@@ -42,7 +42,14 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-BOT_TOKEN = "7488716190:AAEXpUcP-DqMN5GD3Qm-asZcFt_b0dm8SUE"
+import os
+from dotenv import load_dotenv
+
+# Загружаем переменные из файла .env в окружение
+load_dotenv()
+
+# Теперь os.environ сможет их прочитать как на твоем ПК, так и на сервере
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 bot = Bot(token=BOT_TOKEN)
 dp  = Dispatcher(storage=MemoryStorage())
